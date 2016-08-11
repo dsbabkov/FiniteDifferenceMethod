@@ -1,5 +1,6 @@
 #pragma once
 
+#include "InputParameters.h"
 #include "MethodWidget.h"
 #include <QMainWindow>
 
@@ -20,11 +21,18 @@ protected:
 
 private slots:
     void calculateTotalTime();
+    void solveExplicit();
+    void solveImplicit();
 
 private:
     void setupMethodNames();
     void setupLayout();
     void setupConnections();
+    void setupSolvers();
+
+    InputParameters inputParameters() const;
+
+    void solve(AbstractSolver *solver);
 
 private:
     Ui::MainWindow *ui;

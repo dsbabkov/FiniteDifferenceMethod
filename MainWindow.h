@@ -3,6 +3,7 @@
 #include "InputParameters.h"
 #include "MethodWidget.h"
 #include <QMainWindow>
+#include <QSettings>
 
 namespace Ui {
 class MainWindow;
@@ -30,12 +31,18 @@ private:
     void setupConnections();
     void setupSolvers();
 
+    void loadSettings();
+    void saveSettings();
+
     InputParameters inputParameters() const;
 
     void solve(AbstractSolver *solver);
 
 private:
     Ui::MainWindow *ui;
+
     MethodWidget explicitMethodWidget;
     MethodWidget implicitMethodWidget;
+
+    QSettings settings_;
 };

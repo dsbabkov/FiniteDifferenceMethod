@@ -14,10 +14,13 @@ MainWindow::MainWindow(QWidget *parent) :
     setupLayout();
     setupConnections();
     setupSolvers();
+
+    loadSettings();
 }
 
 MainWindow::~MainWindow()
 {
+    saveSettings();
     delete ui;
 }
 
@@ -79,6 +82,20 @@ void MainWindow::setupSolvers()
 {
     explicitMethodWidget.setSolver(std::make_unique<ExplicitSolver>());
     implicitMethodWidget.setSolver(std::make_unique<ImplicitSolver>());
+}
+
+void MainWindow::loadSettings()
+{
+    ui->fragmentCountSpn->setValue(settings_.value("FragmentCount").toInt());
+    ui->timeStepSpn->setValue(settings_.value("TimeStep").toDouble());
+    ui->timeStepCountSpn->setValue(settings_.value("TimeStepCount").toInt());
+}
+
+void MainWindow::saveSettings()
+{
+    settings_.setValue("FragmentCount", ui->fragmentCountSpn->value());
+    settings_.setValue("TimeStep", ui->timeStepSpn->value());
+    settings_.setValue("TimeStepCount", ui->timeStepCountSpn->value());
 }
 
 InputParameters MainWindow::inputParameters() const

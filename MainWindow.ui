@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string> Численное решение смешанной краевой задачи</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="mainLayout">
+    <item row="1" column="1">
+     <widget class="QDoubleSpinBox" name="timeStepSpn">
+      <property name="decimals">
+       <number>5</number>
+      </property>
+      <property name="minimum">
+       <double>0.000010000000000</double>
+      </property>
+      <property name="value">
+       <double>0.000010000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QSpinBox" name="timeStepCountSpn">
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>1000000</number>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Конечное время</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="3">
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>с</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Количество шагов по времени</string>
+      </property>
+      <property name="buddy">
+       <cstring>timeStepCountSpn</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Шаг по времени</string>
+      </property>
+      <property name="buddy">
+       <cstring>timeStepSpn</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QSpinBox" name="fragmentCountSpn">
+      <property name="minimum">
+       <number>2</number>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Количество разбиений</string>
+      </property>
+      <property name="buddy">
+       <cstring>fragmentCountSpn</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLabel" name="totalTimeLbl">
+      <property name="text">
+       <string>0.00001</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>с</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="4" rowspan="4">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>400</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>fragmentCountSpn</tabstop>
+  <tabstop>timeStepSpn</tabstop>
+  <tabstop>timeStepCountSpn</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

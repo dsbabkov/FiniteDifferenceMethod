@@ -13,4 +13,10 @@ public:
     virtual ~ExplicitSolver() override;
 
     virtual void solve() override;
+
+private:
+    void computeLayer();
+    double computedValue(arma::uword j) const;
+    double dUdX(arma::uword j) const;
+    double d2UdX2(arma::uword j) const;
 };

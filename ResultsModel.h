@@ -1,5 +1,6 @@
 #pragma once
 
+#include "InputParameters.h"
 #include <QAbstractTableModel>
 #include <armadillo>
 
@@ -21,6 +22,10 @@ public:
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
+    InputParameters inputParameters() const;
+    void setInputParameters(const InputParameters &inputParameters);
+
 private:
     arma::mat results_;
+    InputParameters inputParameters_;
 };

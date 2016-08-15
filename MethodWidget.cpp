@@ -39,6 +39,7 @@ void MethodWidget::changeEvent(QEvent *e)
 void MethodWidget::setupConnections()
 {
     connect(ui->solveBtn, &QPushButton::clicked, this, &MethodWidget::solvePressed);
+    connect(ui->solveBtn, &QPushButton::clicked, [&](){resultsModel_.setInputParameters(solver_->inputParameters());});
 }
 
 AbstractSolver *MethodWidget::solver() const

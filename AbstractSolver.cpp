@@ -71,7 +71,7 @@ void AbstractSolver::createTimeLayer()
 
 double AbstractSolver::coordinateStep() const
 {
-    return 1.0 / (inputParameters_.fragmentCount + 1);
+    return 1.0 / inputParameters_.fragmentCount;
 }
 
 double AbstractSolver::x(int nodeNumber) const

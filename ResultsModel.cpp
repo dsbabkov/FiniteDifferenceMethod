@@ -15,10 +15,15 @@ void ResultsModel::setResults(const arma::mat &results)
 
 QVariant ResultsModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    Q_UNUSED(section);
-    Q_UNUSED(orientation);
-    Q_UNUSED(role);
-    return QVariant();
+    if (role != Qt::DisplayRole){
+        return QVariant();
+    }
+
+    if (orientation == Qt::Horizontal){
+        return 1.0 / inputParameters_.fragmentCount * section;
+    }
+
+    return inputParameters_.timeStep * section;
 }
 
 int ResultsModel::rowCount(const QModelIndex &/*parent*/) const
@@ -38,4 +43,15 @@ QVariant ResultsModel::data(const QModelIndex &index, int role) const
     }
 
     return results_(static_cast<uword>(index.row()), static_cast<uword>(index.column()));
+}
+
+InputParameters ResultsModel::inputParameters() const
+{
+    return inputParameters_;
+}
+
+void ResultsModel::setInputParameters(const InputParameters &inputParameters)
+{
+    inputParameters_ = inputParameters;
+    emit layoutChanged();
 }

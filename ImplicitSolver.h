@@ -1,7 +1,6 @@
 #pragma once
 
 #include "AbstractSolver.h"
-#include <QObject>
 
 struct SystemOfLinearEquations{
     arma::mat matrix;
@@ -11,6 +10,7 @@ struct SystemOfLinearEquations{
 
 class ImplicitSolver: public AbstractSolver
 {
+    Q_OBJECT
     Q_DISABLE_COPY(ImplicitSolver)
 
 public:

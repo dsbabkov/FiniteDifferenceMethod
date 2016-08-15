@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include <AbstractSolver.h>
+#include "ResultsModel.h"
 #include <memory>
 
 namespace Ui {
@@ -24,6 +25,9 @@ public:
 signals:
     void solvePressed() const;
 
+private slots:
+    void redirectResults();
+
 protected:
     void changeEvent(QEvent *e);
 
@@ -33,4 +37,5 @@ private:
 private:
     Ui::MethodWidget *ui;
     std::unique_ptr<AbstractSolver> solver_;
+    ResultsModel resultsModel_;
 };

@@ -5,6 +5,7 @@
 
 class ExplicitSolver: public AbstractSolver
 {
+    Q_OBJECT
     Q_DISABLE_COPY(ExplicitSolver)
 
 public:

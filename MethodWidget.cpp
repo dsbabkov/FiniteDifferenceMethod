@@ -1,4 +1,5 @@
 #include "MethodWidget.h"
+#include <QtDebug>
 #include "ui_MethodWidget.h"
 
 MethodWidget::MethodWidget(QWidget *parent)
@@ -7,6 +8,9 @@ MethodWidget::MethodWidget(QWidget *parent)
     , solver_{nullptr}
 {
     ui->setupUi(this);
+
+    ui->resultTableView->setModel(&resultsModel_);
+
     setupConnections();
 }
 
@@ -45,4 +49,10 @@ AbstractSolver *MethodWidget::solver() const
 void MethodWidget::setSolver(std::unique_ptr<AbstractSolver> solverPtr)
 {
     solver_ = std::move(solverPtr);
+    qDebug() << connect(solver_.get(), &AbstractSolver::solved, this, &MethodWidget::redirectResults);
+}
+
+void MethodWidget::redirectResults()
+{
+    resultsModel_.setResults(solver_->results());
 }

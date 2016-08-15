@@ -105,3 +105,8 @@ double AbstractSolver::rightBorderCondition()
 {
     return 1.7281;
 }
+
+arma::mat AbstractSolver::results() const
+{
+    return results_;
+}

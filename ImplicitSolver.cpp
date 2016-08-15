@@ -23,6 +23,7 @@ void ImplicitSolver::solve()
         const arma::vec &internalValues = arma::solve(tdm.matrix, tdm.vector);
         writeLastTimeLayerInternalValues(internalValues);
     }
+    emit solved();
 }
 
 SystemOfLinearEquations ImplicitSolver::makeSystemOfLinearEquations() const

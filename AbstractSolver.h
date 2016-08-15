@@ -3,15 +3,22 @@
 #include "ISolver.h"
 #include "InputParameters.h"
 #include <armadillo>
+#include <QObject>
 
-class AbstractSolver: public ISolver
+class AbstractSolver: public QObject, public ISolver
 {
+    Q_OBJECT
 public:
     AbstractSolver();
 
     InputParameters inputParameters() const;
     void setInputParameters(const InputParameters &inputParameters);
     void echoResults() const;
+
+    arma::mat results() const;
+
+signals:
+    void solved() const;
 
 protected:
     void clearResults();

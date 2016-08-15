@@ -13,7 +13,8 @@ SOURCES += main.cpp\
     ISolver.cpp \
     ImplicitSolver.cpp \
     AbstractSolver.cpp \
-    ExplicitSolver.cpp
+    ExplicitSolver.cpp \
+    ResultsModel.cpp
 
 HEADERS  += MainWindow.h \
     MethodWidget.h \
@@ -21,7 +22,8 @@ HEADERS  += MainWindow.h \
     ISolver.h \
     ImplicitSolver.h \
     AbstractSolver.h \
-    ExplicitSolver.h
+    ExplicitSolver.h \
+    ResultsModel.h
 
 FORMS    += MainWindow.ui \
     MethodWidget.ui

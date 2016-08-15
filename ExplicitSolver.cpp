@@ -12,5 +12,5 @@ ExplicitSolver::~ExplicitSolver()
 
 void ExplicitSolver::solve()
 {
-
+    emit solved();
 }

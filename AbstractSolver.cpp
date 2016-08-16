@@ -103,7 +103,7 @@ double AbstractSolver::leftBorderCondition()
 
 double AbstractSolver::rightBorderCondition()
 {
-    return 1.7281;
+    return 1.7182;
 }
 
 arma::mat AbstractSolver::results() const

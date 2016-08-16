@@ -20,10 +20,10 @@ QVariant ResultsModel::headerData(int section, Qt::Orientation orientation, int 
     }
 
     if (orientation == Qt::Horizontal){
-        return 1.0 / inputParameters_.fragmentCount * section;
+        return QString::number(1.0 / inputParameters_.fragmentCount * section);
     }
 
-    return inputParameters_.timeStep * section;
+    return QString::number(inputParameters_.timeStep * section, 'f');
 }
 
 int ResultsModel::rowCount(const QModelIndex &/*parent*/) const

@@ -38,7 +38,7 @@ double ExplicitSolver::computedValue(arma::uword j) const
 {
     double e = exp(x(static_cast<int>(j)));
     double u = atPreLastRow(j);
-    return inputParameters().timeStep * ((1 + e) * d2UdX2(j) - dUdX(j) + e * (u + 1)) + u;
+    return inputParameters().timeStep * ((1 + e) * d2UdX2(j) - dUdX(j) - e * (u + 1)) + u;
 }
 
 double ExplicitSolver::dUdX(arma::uword j) const

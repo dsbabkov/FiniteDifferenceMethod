@@ -30,5 +30,5 @@ HEADERS  += MainWindow.h \
 FORMS    += MainWindow.ui \
     MethodWidget.ui
 
-LIBS += -LC:\Development\armadillo\bin -larmadillo -gfortran -LC:\Development\OpenBLAS\lib -lopenblas
+LIBS += -LC:\Development\armadillo\bin -larmadillo
 INCLUDEPATH += C:\Development\armadillo\include

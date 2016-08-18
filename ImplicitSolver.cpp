@@ -1,4 +1,6 @@
 #include "ImplicitSolver.h"
+#include "TridiagonalMatrixAlgorithm.h"
+#include <iostream>
 
 using arma::uword;
 
@@ -24,7 +26,7 @@ void ImplicitSolver::solve()
 
     for (int i = 1; i <= inputParameters().timeStepCount; ++i){
         createTimeLayer();
-        const arma::vec &internalValues = arma::solve(tdm, answer());
+        const arma::vec &internalValues = solveTridiagonal(tdm, answer());
         writeLastTimeLayerInternalValues(internalValues);
     }
     emit solved();

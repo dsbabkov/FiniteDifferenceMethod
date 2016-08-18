@@ -21,6 +21,7 @@ public:
 
 private:
     SystemOfLinearEquations makeSystemOfLinearEquations() const;
+    arma::mat tridiagonalMatrix() const;
     arma::vec subDiagonal() const;
     arma::vec mainDiagonal() const;
     arma::vec superDiagonal() const;

@@ -80,8 +80,8 @@ void MainWindow::setupConnections()
 
 void MainWindow::setupSolvers()
 {
-    explicitMethodWidget.setSolver(std::make_unique<ExplicitSolver>());
-    implicitMethodWidget.setSolver(std::make_unique<ImplicitSolver>());
+    explicitMethodWidget.setSolver(std::unique_ptr<ExplicitSolver>(new ExplicitSolver()));
+    implicitMethodWidget.setSolver(std::unique_ptr<ImplicitSolver>(new ImplicitSolver()));
 }
 
 void MainWindow::loadSettings()

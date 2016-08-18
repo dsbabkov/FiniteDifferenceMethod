@@ -38,17 +38,15 @@ double ExplicitSolver::computedValue(arma::uword j) const
 {
     double e = exp(x(static_cast<int>(j)));
     double u = atPreLastRow(j);
-    double d1 = dUdX(j);
-    double d2 = d2UdX2(j);
-    return inputParameters().timeStep * ((1 + e) * d2 - d1 + e * (u + 1)) + u;
+    return inputParameters().timeStep * ((1 + e) * d2UdX2(j) - dUdX(j) + e * (u + 1)) + u;
 }
 
 double ExplicitSolver::dUdX(arma::uword j) const
 {
-    return (atPreLastRow(j+1) - atPreLastRow(j-1)) / 2 / coordinateStep();
+    return (atPreLastRow(j+1) - atPreLastRow(j-1)) / (2 * coordinateStep());
 }
 
 double ExplicitSolver::d2UdX2(arma::uword j) const
 {
-    return (atPreLastRow(j+1) - 2 * atPreLastRow(j) + atPreLastRow(j-1)) / 2 / pow(coordinateStep(), 2);
+    return (atPreLastRow(j+1) - 2 * atPreLastRow(j) + atPreLastRow(j-1)) / pow(coordinateStep(), 2);
 }

@@ -26,7 +26,7 @@ private:
     arma::vec subDiagonal() const;
     arma::vec mainDiagonal() const;
     arma::vec superDiagonal() const;
-    arma::vec answer() const; // TODO: переименовать. Это ветор констант в СЛАУ d без учёта ГУ
+    arma::vec answer() const; // TODO: переименовать. Это ветор констант в СЛАУ d
 
 private:
     double leftAnswerRatio;

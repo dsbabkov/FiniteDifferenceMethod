@@ -40,14 +40,8 @@ SystemOfLinearEquations ImplicitSolver::makeSystemOfLinearEquations() const
     SystemOfLinearEquations result;
     result.matrix = tridiagonalMatrix();
 
-    const arma::vec &d = answer();
+    result.vector = answer();
 
-    result.vector = d;
-
-    const uword lastNodeNumber = d.n_elem - 1;
-
-    result.vector(0) += leftAnswerRatio * atLastRow(0);
-    result.vector(lastNodeNumber) += rightAnswerRatio * atLastRow(static_cast<uword>(inputParameters().fragmentCount));
 
     return result;
 }
@@ -127,5 +121,10 @@ arma::vec ImplicitSolver::answer() const
         double e = exp(x(static_cast<int>(i) + 1));
         result(i) = -atPreLastRow(i + 1) / inputParameters().timeStep + e;
     }
+
+
+    result(0) += leftAnswerRatio * atLastRow(0);
+    result(internalNodeCount - 1) += rightAnswerRatio * atLastRow(static_cast<uword>(inputParameters().fragmentCount));
+
     return result;
 }

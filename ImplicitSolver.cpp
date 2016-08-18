@@ -20,10 +20,11 @@ void ImplicitSolver::solve()
     writeInitialField();
     computeAnswerRatios();
 
+    const arma::mat &tdm = tridiagonalMatrix();
+
     for (int i = 1; i <= inputParameters().timeStepCount; ++i){
         createTimeLayer();
-        const SystemOfLinearEquations &tdm = makeSystemOfLinearEquations();
-        const arma::vec &internalValues = arma::solve(tdm.matrix, tdm.vector);
+        const arma::vec &internalValues = arma::solve(tdm, answer());
         writeLastTimeLayerInternalValues(internalValues);
     }
     emit solved();

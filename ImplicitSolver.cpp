@@ -36,17 +36,6 @@ void ImplicitSolver::computeAnswerRatios()
     rightAnswerRatio = -superDiagonal().tail(1)(0); //last in superDiagonal
 }
 
-SystemOfLinearEquations ImplicitSolver::makeSystemOfLinearEquations() const
-{
-    SystemOfLinearEquations result;
-    result.matrix = tridiagonalMatrix();
-
-    result.vector = answer();
-
-
-    return result;
-}
-
 arma::mat ImplicitSolver::tridiagonalMatrix() const
 {
     const arma::vec &a = subDiagonal();

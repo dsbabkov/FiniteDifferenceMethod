@@ -2,12 +2,6 @@
 
 #include "AbstractSolver.h"
 
-struct SystemOfLinearEquations{
-    arma::mat matrix;
-    arma::vec vector;
-};
-
-
 class ImplicitSolver: public AbstractSolver
 {
     Q_OBJECT
@@ -21,7 +15,6 @@ public:
 
 private:
     void computeAnswerRatios();
-    SystemOfLinearEquations makeSystemOfLinearEquations() const;
     arma::mat tridiagonalMatrix() const;
     arma::vec subDiagonal() const;
     arma::vec mainDiagonal() const;

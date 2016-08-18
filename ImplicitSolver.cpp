@@ -3,6 +3,8 @@
 using arma::uword;
 
 ImplicitSolver::ImplicitSolver()
+    : leftAnswerRatio{}
+    , rightAnswerRatio{}
 {
 
 }
@@ -16,6 +18,7 @@ void ImplicitSolver::solve()
 {
     clearResults();
     writeInitialField();
+    computeAnswerRatios();
 
     for (int i = 1; i <= inputParameters().timeStepCount; ++i){
         createTimeLayer();
@@ -26,22 +29,25 @@ void ImplicitSolver::solve()
     emit solved();
 }
 
+void ImplicitSolver::computeAnswerRatios()
+{
+    leftAnswerRatio = -subDiagonal()(0);
+    rightAnswerRatio = -superDiagonal().tail(1)(0); //last in superDiagonal
+}
+
 SystemOfLinearEquations ImplicitSolver::makeSystemOfLinearEquations() const
 {
     SystemOfLinearEquations result;
     result.matrix = tridiagonalMatrix();
 
-    const arma::vec &a = subDiagonal();
-    const arma::vec &c = superDiagonal();
     const arma::vec &d = answer();
-
 
     result.vector = d;
 
     const uword lastNodeNumber = d.n_elem - 1;
 
-    result.vector(0) -= a(0) * atLastRow(0);
-    result.vector(lastNodeNumber) -= c(lastNodeNumber) * atLastRow(static_cast<uword>(inputParameters().fragmentCount));
+    result.vector(0) += leftAnswerRatio * atLastRow(0);
+    result.vector(lastNodeNumber) += rightAnswerRatio * atLastRow(static_cast<uword>(inputParameters().fragmentCount));
 
     return result;
 }
